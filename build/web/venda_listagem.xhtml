@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="/padrao.xhtml">
+        <ui:define name="centro">
+            <div class="page-content">
+                                   
+                    
+                    <h:form>
+            <h1>LISTAGEM DE VENDAS</h1>
+            <h:commandButton value="VOLTAR"
+                             style="width: 95%" 
+                             action="RetornaParaIndex"/>
+            <h:commandButton value="INCLUIR NOVA VENDA"
+                             style="width: 95%"
+                             action="#{vendaFaces.PreparaInclusao}"/>
+            <br/>
+            <h:dataTable var="item"
+                         value="#{vendaFaces.vendas}"
+                         border="1"
+                         style="width: 95%">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="CÓDIGO"/>
+                    </f:facet>
+                    <h:outputLabel value="#{item.idvenda}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="VENDEDOR"/>
+                    </f:facet>
+                    <h:outputLabel value="#{item.usuario.nome}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="PRODUTO"/>
+                    </f:facet>
+                    <h:outputLabel value="#{item.produto.nome}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="VALOR PRODUTO"/>
+                    </f:facet>
+                    <h:outputLabel value="#{item.produto.preco}">
+                      <f:convertNumber currencySymbol="R$" type="currency"></f:convertNumber>
+                    </h:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="VALOR VENDA"/>
+                    </f:facet>
+                    <h:outputLabel value="#{item.vlvenda}">
+                      <f:convertNumber currencySymbol="R$" type="currency"></f:convertNumber>
+                    </h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="DESCONTO"/>
+                    </f:facet>
+                    <h:outputLabel value="#{item.produto.preco - item.vlvenda}">
+                      <f:convertNumber currencySymbol="R$" type="currency"></f:convertNumber>
+                    </h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="OPÇÃO"/>
+                    </f:facet>
+                    <h:commandLink value="EDITAR" action="VaiParaAlterar">
+                        <f:setPropertyActionListener target="#{produtoFaces.produtoselecionado}" value="#{item}"/>
+                    </h:commandLink>
+                    <h:outputLabel value="-|-" />
+                    <h:commandLink value="EXIBIR"  action="VaiParaVisualizar">
+                        <f:setPropertyActionListener target="#{produtoFaces.produtoselecionado}" value="#{item}"/>
+                    </h:commandLink>
+                    <h:outputLabel value="-|-" />
+                    <h:commandLink value="EXCLUIR" action="#{produtoFaces.deletar()}">
+                         <f:setPropertyActionListener target="#{produtoFaces.produtoselecionado}" value="#{item}"/>
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+            </div>                
+        </ui:define>
+    </ui:decorate>
+</html>

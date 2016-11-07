@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="/padrao.xhtml">
+        <ui:define name="centro">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        Nova Venda
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            Inclusão de Venda
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
+                <div class="row">
+                    <h:form>
+                        <table>
+                            <tr>
+                                <td> <h:outputLabel value="VENDEDOR "/> </td>
+                                <td>    
+                                    <h:selectOneMenu value="#{VendaFaces.vendaselecionada.usuario.id}">
+                                        <f:selectItem itemLabel="Selecione um item"
+                                                      itemValue="-1"/>
+                                        <f:selectItems var="vendedor"
+                                                       value="#{usuarioFaces.usuarioDao}"
+                                                       itemLabel="#{vendedor.nome}"
+                                                       itemValue="#{vendedor.idusuario}"/>
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>    
+                                <td>
+                                    <h:outputLabel value="PRODUTO"/>
+                                </td>
+                                <td>
+                                    <h:selectOneMenu value="#{VendaFaces.vendaselecionada.produto.idproduto}">
+                                        <f:selectItem itemLabel="Selecione um item"
+                                                      itemValue="-1"/>
+                                        <f:selectItems var="produto"
+                                                       value="#{produtoFaces.produtoDao}"
+                                                       itemLabel="#{produto.nome}"
+                                                       itemValue="#{produto.idproduto}"/>
+                                                       
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:outputLabel value="VL VENDA"/>
+                                </td>
+                                <td>
+                                    <h:inputText value="#{VendaFaces.vendaselecionada.vlvenda}"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <h:commandButton value="Salvar" action="#{VendaFaces.finalizarVenda()}"/>
+                    </h:form>
+                </div> 
+            </div>
+        </ui:define>
+    </ui:decorate>
+</html>

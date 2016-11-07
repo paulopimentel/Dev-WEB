@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="/padrao.xhtml">
+        <ui:define name="centro">
+             <div class="page-content">   
+                 <div class="page-header">
+                    <h1>
+                        Usuários
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            Visualizar usuários
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
+            <h:form>
+                <br />
+                <h:commandButton value="Voltar" action="Voltar" style="width: 71%"/><br/><br/>
+                <h:commandButton value="Incluir" action="#{usuarioFaces.PreparaInclusao()}" style="width: 71%"/>                
+                <br/><br/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h:dataTable var="item" border="1" value="#{usuarioFaces.listaUsuarios}" class="table  table-bordered table-hover">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                    #{item.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">NOME</f:facet>
+                                    #{item.nome}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">LOGIN</f:facet>
+                                    #{item.login}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">AÇÃO</f:facet>
+                                <div align="center">
+                                    
+                                    
+                                <h:commandButton value="Visualizar" action="Visualizar" class="btn btn-success">
+                                    <f:setPropertyActionListener target="#{usuarioFaces.dto}" value="#{item}"/>
+                                </h:commandButton>
+
+                                <h:commandButton value="Editar" action="Alterar" class="btn btn-info">
+                                    <f:setPropertyActionListener target="#{usuarioFaces.dto}" value="#{item}"/>
+                                </h:commandButton>
+                                
+                                <h:commandButton value="Excluir" action="#{usuarioFaces.DeletarUsuario()}" class="btn btn-danger">
+                                    <f:setPropertyActionListener target="#{usuarioFaces.dto}" value="#{item}"/>
+                                </h:commandButton>
+                                </div>
+                            </h:column>                    
+                        </h:dataTable>
+                    </div>
+                </div>
+            </h:form>
+                     </div>
+        </ui:define>
+    </ui:decorate>
+</html>
+

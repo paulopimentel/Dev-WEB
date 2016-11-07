@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="padrao_1.xhtml" x="-197" y="75" zoom="true"/>
+        <Node id="produto_visualizar.xhtml" x="804" y="363" zoom="true"/>
+        <Node id="produto_alterar.xhtml" x="691" y="646" zoom="true"/>
+        <Node id="index.xhtml" x="517" y="496" zoom="false"/>
+        <Node id="welcomePrimefaces.xhtml" x="-226" y="143" zoom="true"/>
+        <Node id="produto_incluir.xhtml" x="792" y="17" zoom="true"/>
+        <Node id="usuario_incluir.xhtml" x="48" y="217" zoom="true"/>
+        <Node id="teste.xhtml" x="-190" y="49" zoom="true"/>
+        <Node id="produto_index.xhtml" x="775" y="209" zoom="false"/>
+        <Node id="usuario_index.xhtml" x="60" y="395" zoom="true"/>
+        <Node id="venda_listagem.xhtml" x="334" y="51" zoom="true"/>
+        <Node id="NovaVenda.xhtml" x="288" y="326" zoom="true"/>
+        <Node id="usuario_visualizar.xhtml" x="-225" y="298" zoom="true"/>
+        <Node id="usuario_alterar.xhtml" x="-46" y="624" zoom="true"/>
+        <Node id="padrao.xhtml" x="-176" y="110" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>
